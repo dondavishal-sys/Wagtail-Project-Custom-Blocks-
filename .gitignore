@@ -30,3 +30,18 @@ coverage/
 .vscode
 
 *.db
+
+# Django & Wagtail static
+staticfiles/
+media/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+*.sqlite3
+mysite/static/admin/
