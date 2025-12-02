@@ -1,145 +1,173 @@
-<h1 align="center">
-    <picture>
-        <source media="(prefers-color-scheme: light)" srcset=".github/wagtail.svg">
-        <source media="(prefers-color-scheme: dark)" srcset=".github/wagtail-inverse.svg">
-        <img width="343" src=".github/wagtail.svg" alt="Wagtail">
-    </picture>
-</h1>
-<p align="center">
-    <br>
-    <a href="https://github.com/wagtail/wagtail/actions">
-        <img src="https://github.com/wagtail/wagtail/workflows/Wagtail%20CI/badge.svg" alt="Build Status" />
-    </a>
-    <a href="https://opensource.org/licenses/BSD-3-Clause">
-        <img src="https://img.shields.io/badge/license-BSD-blue.svg" alt="License" />
-    </a>
-    <a href="https://pypi.python.org/pypi/wagtail/">
-        <img src="https://img.shields.io/pypi/v/wagtail.svg" alt="Version" />
-    </a>
-    <a href="https://pypi.python.org/pypi/wagtail/">
-        <img src="https://img.shields.io/pypi/dm/wagtail?logo=Downloads" alt="Monthly downloads" />
-    </a>
-    <a href="https://fosstodon.org/@wagtail">
-        <img src="https://img.shields.io/mastodon/follow/109308882653647818?domain=https%3A%2F%2Ffosstodon.org&style=social" alt="Follow @wagtail@fosstodon.org">
-    </a>
-</p>
+# 🚀 Wagtail CMS – Local Setup & Development Guide
 
-Wagtail is an open source content management system built on Django, with a strong community and commercial support. It's focused on user experience, and offers precise control for designers and developers.
+This project utilizes a source build of Wagtail for maximum flexibility, alongside custom StreamField blocks and Tailwind CSS for modern front-end development.
 
-![Wagtail screenshot](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/wagtail-screenshot-with-browser.png)
-
-### 🔥 Features
-
--   A fast, attractive interface for authors
--   Complete control over front-end design and structure
--   Scales to millions of pages and thousands of editors
--   Fast out of the box, cache-friendly when you need it
--   Content API for 'headless' sites with decoupled front-end
--   Runs on a Raspberry Pi or a multi-datacenter cloud platform
--   StreamField encourages flexible content without compromising structure
--   Powerful, integrated search, using Elasticsearch or PostgreSQL
--   Excellent support for images and embedded content
--   Multi-site and multi-language ready
--   Embraces and extends Django
-
-Find out more at [wagtail.org](https://wagtail.org/).
-
-### 👉 Getting started
-
-Wagtail works with [Python 3](https://www.python.org/downloads/), on any platform.
-
-To get started with using Wagtail, run the following in a [virtual environment](https://docs.python.org/3/tutorial/venv.html):
-
-![Installing Wagtail](.github/install-animation.gif)
-
-```sh
-pip install wagtail
-wagtail start mysite
-cd mysite
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
-```
-
-For detailed installation and setup docs, see [the getting started tutorial](https://docs.wagtail.org/en/stable/getting_started/tutorial.html).
-
-### 👨‍👩‍👧‍👦 Who’s using it?
-
-Wagtail is used by [NASA](https://www.nasa.gov/), [Google](https://www.google.com/), [Oxfam](https://www.oxfam.org/en), the [NHS](https://www.nhs.uk/), [Mozilla](https://www.mozilla.org/en-US/), [MIT](https://www.mit.edu/), the [Red Cross](https://www.icrc.org/en), [Salesforce](https://www.salesforce.com/), [NBC](https://www.nbc.com/), [BMW](https://www.bmw.com/en/index.html), and the US and UK governments. Add your own Wagtail site to [madewithwagtail.org](https://madewithwagtail.org).
-
-### 📖 Documentation
-
-[docs.wagtail.org](https://docs.wagtail.org/) is the full reference for Wagtail, and includes guides for developers, designers and editors, alongside [release notes](https://docs.wagtail.org/en/stable/releases/) and our [roadmap](https://wagtail.org/roadmap/).
-
-For those who are **new to Wagtail**, the [Zen of Wagtail](https://docs.wagtail.org/en/stable/getting_started/the_zen_of_wagtail.html) will help you understand what Wagtail is, and what Wagtail is _not_.
-
-**For developers** who are ready to jump in to their first Wagtail website the [Getting Started Tutorial](https://docs.wagtail.org/en/stable/getting_started/tutorial.html) will guide you through creating and editing your first page.
-
-**Do you have an existing Django project?** The [Wagtail Integration documentation](https://docs.wagtail.org/en/stable/getting_started/integrating_into_django.html) is the best place to start.
-
-### 📌 Compatibility
-
-_(If you are reading this on GitHub, the details here may not be indicative of the current released version - please see [Compatible Django / Python versions](https://docs.wagtail.org/en/stable/releases/upgrading.html#compatible-django-python-versions) in the Wagtail documentation.)_
-
-Wagtail supports:
-
--   Django 4.2.x and 5.2.x
--   Python 3.10, 3.11, 3.12, 3.13, and 3.14
--   PostgreSQL, MySQL, MariaDB and SQLite (with JSON1) as database backends
-
-[Previous versions of Wagtail](https://docs.wagtail.org/en/stable/releases/upgrading.html#compatible-django-python-versions) additionally supported Python 2.7, 3.8 and earlier Django versions.
+Follow the steps below to set up the environment, install dependencies, build the Wagtail admin interface, and run the project locally.
 
 ---
 
-### 📢 Community Support
+## 1. Get the Code
 
-There is an active community of Wagtail users and developers responding to questions on [Stack Overflow](https://stackoverflow.com/questions/tagged/wagtail). When posting questions, please read Stack Overflow's advice on [how to ask questions](https://stackoverflow.com/help/how-to-ask) and remember to tag your question "wagtail".
+### 1.1 Clone the Repository
 
-For topics and discussions that do not fit Stack Overflow's question and answer format we have a [Slack workspace](https://github.com/wagtail/wagtail/wiki/Slack). Please respect the time and effort of volunteers by not asking the same question in multiple places.
+```bash
+git clone <YOUR_REPO_URL>
+cd <YOUR_PROJECT_FOLDER>
+```
 
-[![Join slack community](.github/join-slack-community.png)](https://github.com/wagtail/wagtail/wiki/Slack)
+### 1.2 Clone Wagtail Source
 
-Our [GitHub discussion boards](https://github.com/wagtail/wagtail/discussions) are open for sharing ideas and plans for the Wagtail project.
+Since this project uses a source build of Wagtail, you'll need to clone the Wagtail repository into your project directory.
 
-We maintain a curated list of third party packages, articles and other resources at [Awesome Wagtail](https://github.com/springload/awesome-wagtail).
+```bash
+git clone https://github.com/wagtail/wagtail.git
+```
 
-### 🧑‍💼 Commercial Support
+This will create a `wagtail/` directory within your project containing the Wagtail source code.
 
-Wagtail is sponsored by [Torchbox](https://torchbox.com/). If you need help implementing or hosting Wagtail, please contact us: hello@torchbox.com. See also [madewithwagtail.org/developers/](https://madewithwagtail.org/developers/) for expert Wagtail developers around the world.
+---
 
-### 🔐 Security
+## 2. Python Environment Setup
 
-We take the security of Wagtail, and related packages we maintain, seriously. If you have found a security issue with any of our projects please email us at [security@wagtail.org](mailto:security@wagtail.org) so we can work together to find and patch the issue. We appreciate responsible disclosure with any security related issues, so please contact us first before creating a GitHub issue.
+### 2.1 Create & Activate Virtual Environment (venv)
 
-If you want to send an encrypted email (optional), the public key ID for security@wagtail.org is 0xbed227b4daf93ff9, and this public key is available from most commonly-used keyservers.
+It is highly recommended to isolate your dependencies using a virtual environment.
 
-### 🕒 Release schedule
+```bash
+# Create the environment
+python3 -m venv venv
 
-Feature releases of Wagtail are released every three months. Selected releases are designated as Long Term Support (LTS) releases, and will receive maintenance updates for an extended period to address any security and data-loss related issues. For dates of past and upcoming releases and support periods, see [Release Schedule](https://github.com/wagtail/wagtail/wiki/Release-schedule).
+# Activate on macOS & Linux
+source venv/bin/activate
 
-#### 🕛 Nightly releases
+# Activate on Windows
+venv\Scripts\activate
+```
 
-To try out the latest features before a release, we also create builds from `main` every night. You can find instructions on how to install the latest nightly release at https://releases.wagtail.org/nightly/index.html
+### 2.2 Install Python Requirements
 
-### 🙋🏽 Contributing
+This project uses `pyproject.toml` for dependency management (Poetry/Hatch style), but standard pip installation is also supported.
 
-If you're a Python or Django developer, fork the repo and get stuck in! We have several developer focused channels on the [Slack workspace](https://github.com/wagtail/wagtail/wiki/Slack).
+```bash
+# Recommended: If using Poetry (or similar tool)
+poetry install
 
-You might like to start by reviewing the [contributing guidelines](https://docs.wagtail.org/en/latest/contributing/index.html) and checking issues with the [good first issue](https://github.com/wagtail/wagtail/labels/good%20first%20issue) label.
+# Alternative: If using pip/setuptools with pyproject.toml
+pip install -e .
+```
 
-We also welcome translations for Wagtail's interface. Translation work should be submitted through [Transifex](https://explore.transifex.com/torchbox/wagtail/).
+**Optional Legacy Step:** To generate a `requirements.txt` file for sharing or deployment:
 
-### 🔓 License
+```bash
+pip freeze > requirements.txt
+```
 
-[BSD](https://github.com/wagtail/wagtail/blob/main/LICENSE) - Free to use and modify for any purpose, including both open and closed-source code.
+---
 
-### 👏 Thanks
+## 3. Frontend & Wagtail Admin Build
 
-We thank the following organisations for their services used in Wagtail's development:
+Since this project uses a Wagtail source build, you must build the necessary static assets for the admin interface.
 
-[![Browserstack](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/browserstack-logo.svg)](https://www.browserstack.com/)<br>
-[BrowserStack](https://www.browserstack.com/) provides the project with free access to their live web-based browser testing tool, and automated Selenium cloud testing.
+### 3.1 Install Node Dependencies
 
-[![Assistiv Labs](https://cdn.jsdelivr.net/gh/wagtail/wagtail@main/.github/assistivlabs-logo.png)](https://assistivlabs.com/)<br>
-[Assistiv Labs](https://assistivlabs.com/) provides the project with unlimited access to their remote testing with assistive technologies.
+Navigate into the Wagtail source directory and install Node dependencies.
+
+```bash
+cd wagtail
+npm install
+```
+
+### 3.2 Build Admin Assets
+
+Run the build script to generate the admin CSS and JavaScript files.
+
+```bash
+npm run build
+```
+
+This command populates `wagtail/admin/static/wagtailadmin/` with the required files.
+
+---
+
+## 4. Database & Static Files
+
+### 4.1 Collect Static Files
+
+Return to the main project directory (where `manage.py` is located) and collect all static assets.
+
+```bash
+cd ..  # Go back to the root project folder
+python manage.py collectstatic
+```
+
+### 4.2 Apply Database Migrations
+
+Set up the necessary database schema for Django and Wagtail.
+
+```bash
+python manage.py migrate
+```
+
+### 4.3 Create Admin User
+
+Create a superuser to access the Wagtail admin interface.
+
+```bash
+python manage.py createsuperuser
+```
+
+---
+
+## 5. Running the Application
+
+### 5.1 Start the Server
+
+```bash
+python manage.py runserver
+```
+
+### Access Points
+
+| Interface | Address |
+|-----------|---------|
+| Frontend Site | http://127.0.0.1:8000 |
+| Wagtail Admin | http://127.0.0.1:8000/admin |
+
+---
+
+## 6. Project Structure
+
+A schematic view of the core directories:
+
+```
+project/
+├── mysite/                 # Main Django project settings
+├── cms_app/                # Your custom CMS application (models, blocks, templates)
+├── wagtail/                # Wagtail source repo
+├── venv/                   # Virtual environment
+├── pyproject.toml          # Python dependency file
+└── manage.py
+```
+
+### Custom Blocks & Templates Location
+
+| Content Type | Filepath | Purpose |
+|--------------|----------|---------|
+| Page Models | `cms_app/models.py` | Defines StreamFields and Page structures. |
+| Block Templates | `cms_app/templates/cms_app/blocks/` | HTML rendering for individual StreamField blocks. |
+| Static Assets | `cms_app/static/cms_app/` | CSS, JS, and images specific to your app. |
+
+---
+
+
+## Prototype Images
+
+Here are some sample images used in this project:
+
+![Image 1](Images(prototype)/image-1.png)
+![Image 2](Images(prototype)/image-2.png)
+![Image 7](Images(prototype)/Image-7.png)
+![Image 4](Images(prototype)/Image-4.png)
+![Image 5](Images(prototype)/image-5.png)
+![Image 6](Images(prototype)/image-6.png)
+
